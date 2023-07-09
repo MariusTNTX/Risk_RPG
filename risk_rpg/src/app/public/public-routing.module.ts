@@ -12,7 +12,7 @@ const routes: Routes = [
     component: PublicComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         component: HomeComponent,
       },
       {

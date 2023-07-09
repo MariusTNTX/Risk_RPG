@@ -1,7 +1,23 @@
 @import 'src/assets/scss/_colors.scss';
 
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: lightgray;
+}
+
 .toolbar-container {
   align-items: center;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+}
+
+.page-container{
+  /* display: flex;
+  flex: 1 1 auto;
+  box-sizing: border-box; */
+  width: 100%;
 }
 
 .toolbar-title {

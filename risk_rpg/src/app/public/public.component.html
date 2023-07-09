@@ -1,25 +1,30 @@
-<mat-toolbar class="toolbar-container bg-gray">
+<div class="container">
+  <mat-toolbar class="toolbar-container bg-gray">
 
-  <span class="toolbar-title color-white">RISK RPG</span>
-  <span class="toolbar-spacer"></span>
+    <span class="toolbar-title color-white">RISK RPG</span>
+    <span class="toolbar-spacer"></span>
+  
+    <div class="toolbar-options">
+      <button mat-button class="toolbar-option" routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+    
+      <button mat-button class="toolbar-option" routerLink="/mapManager">
+        <mat-icon>map</mat-icon>
+        <span>Nuevo Mapa</span>
+      </button>
+    
+      <button mat-button class="toolbar-option" routerLink="/newGame">
+        <mat-icon>casino</mat-icon>
+        <span>Nueva Partida</span>
+      </button>
+    </div>
+  
+  </mat-toolbar>
 
-  <div class="toolbar-options">
-    <button mat-button class="toolbar-option" routerLink="/home">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-  
-    <button mat-button class="toolbar-option" routerLink="/mapManager">
-      <mat-icon>map</mat-icon>
-      <span>Nuevo Mapa</span>
-    </button>
-  
-    <button mat-button class="toolbar-option" routerLink="/newGame">
-      <mat-icon>casino</mat-icon>
-      <span>Nueva Partida</span>
-    </button>
+  <div class="page-container">
+    <router-outlet></router-outlet>
   </div>
-
-</mat-toolbar>
-
-<router-outlet></router-outlet>
+  
+</div>

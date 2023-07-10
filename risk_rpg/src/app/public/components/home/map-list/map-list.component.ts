@@ -6,5 +6,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./map-list.component.scss']
 })
 export class MapListComponent {
+  public mapList: any[] = [
+    {
+      image: '../../../../../assets/images/map-example.jpg',
+      title: 'La Tierra',
+      areas: '6',
+      territories: '193'
+    },
+    {
+      image: '../../../../../assets/images/map-example.jpg',
+      title: 'La Tierra',
+      areas: '6',
+      territories: '193'
+    },
+    {
+      image: '../../../../../assets/images/map-example.jpg',
+      title: 'La Tierra',
+      areas: '6',
+      territories: '193'
+    },
+    {
+      image: '../../../../../assets/images/map-example.jpg',
+      title: 'La Tierra',
+      areas: '6',
+      territories: '193'
+    },
+    {
+      image: '../../../../../assets/images/map-example.jpg',
+      title: 'La Tierra',
+      areas: '6',
+      territories: '193'
+    },
+  ];
 
+  constructor(){ }
 }

@@ -1,0 +1,27 @@
+@import "src/assets/scss/_colors.scss";
+
+.main-container {
+  border: 1px solid $darkgray;
+  box-shadow: 3px 3px 10px $darkgray;
+}
+
+.header{
+  border-top: 3px solid $darkgray;
+  flex-direction: column;
+}
+
+.title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.actions{
+  justify-content: center;
+  
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

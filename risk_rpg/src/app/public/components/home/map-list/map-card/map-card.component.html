@@ -1,0 +1,19 @@
+<mat-card class="main-container">
+  <img mat-card-image src="{{ map.image }}" alt="{{ map.title }}">
+  <mat-card-header class="header mb-2">
+    <mat-card-title class="title mb-2">{{ map.title }}</mat-card-title>
+    <mat-card-subtitle>Areas: {{ map.areas }}</mat-card-subtitle>
+    <mat-card-subtitle>Territorios: {{ map.territories }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions class="actions">
+    <button mat-icon-button class="color-darkgray" matTooltip="Jugar">
+      <mat-icon>casino</mat-icon>
+    </button>
+    <button mat-icon-button class="color-actionBlue" matTooltip="Editar">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button class="color-actionRed" matTooltip="Eliminar">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

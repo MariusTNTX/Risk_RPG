@@ -4,6 +4,30 @@
 .bg-black{ background-color: black }
 .color-black{ color: black }
 
-$gray: darkslategray;
-.bg-gray{ background-color: darkslategray }
-.color-gray{ color: darkslategray }
+$gray: lightgray;
+.bg-gray{ background-color: lightgray }
+.color-gray{ color: lightgray }
+
+$darkgray: darkslategray;
+.bg-darkgray{ background-color: darkslategray }
+.color-darkgray{ color: darkslategray }
+
+/* $green: palegreen;
+.bg-green{ background-color: palegreen }
+.color-green{ color: palegreen } */
+
+$green: rgba(0,255,0,.05);
+.bg-green{ background-color: rgba(0,255,0,.05) }
+.color-green{ color: rgba(0,255,0,.05) }
+
+$blue: darkslateblue;
+.bg-blue{ background-color: darkslateblue }
+.color-blue{ color: darkslateblue }
+
+$actionBlue: royalblue;
+.bg-actionBlue{ background-color: royalblue }
+.color-actionBlue{ color: royalblue }
+
+$actionRed: darkred;
+.bg-actionRed{ background-color: darkred }
+.color-actionRed{ color: darkred }

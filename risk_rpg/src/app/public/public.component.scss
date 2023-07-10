@@ -1,10 +1,10 @@
 @import 'src/assets/scss/_colors.scss';
 
-.container{
+.main-container{
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: lightgray;
+  background-color: $gray;
 }
 
 .toolbar-container {

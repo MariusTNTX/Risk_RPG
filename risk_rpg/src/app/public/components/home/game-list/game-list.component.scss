@@ -1,0 +1,29 @@
+@import "src/assets/scss/_colors.scss";
+
+.header {
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $gray;
+  border-left: 8px solid $darkgray;
+  border-top-left-radius: 6px;
+  padding-bottom: 16px;
+  .title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .addButton {
+    background-color: $blue;
+    color: white;
+    font-weight: bold;
+    padding-right: 12px;
+    .icon {
+      margin-right: 4px;
+    }
+  }
+}
+
+.content{
+  padding-top: 16px;
+  overflow-y: auto;
+  max-height: 405px;
+}

@@ -16,6 +16,8 @@ import { HomeComponent } from './components/home/home.component';
 import { MapListComponent } from './components/home/map-list/map-list.component';
 import { GameListComponent } from './components/home/game-list/game-list.component';
 import { MapCardComponent } from './components/home/map-list/map-card/map-card.component';
+import { GameCardComponent } from './components/home/game-list/game-card/game-card.component';
+import { MillisecondsToHoursPipe } from './pipes/milliseconds-to-hours.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MapCardComponent } from './components/home/map-list/map-card/map-card.c
     HomeComponent,
     MapListComponent,
     GameListComponent,
-    MapCardComponent
+    MapCardComponent,
+    GameCardComponent,
+    MillisecondsToHoursPipe
   ],
   imports: [
     CommonModule,

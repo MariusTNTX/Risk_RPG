@@ -1,0 +1,80 @@
+<mat-card class="main-container big-card">
+
+  <div class="image">
+    <img mat-card-image src="{{ game.image }}" alt="{{ game.title }}">
+    <mat-card-actions class="actions">
+      <button mat-icon-button class="color-darkgray mb-1" matTooltip="Jugar" matTooltipPosition="left">
+        <mat-icon>casino</mat-icon>
+      </button>
+      <button mat-icon-button class="color-actionRed" matTooltip="Eliminar" matTooltipPosition="left">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </div>
+  
+  <mat-card-header class="header">
+    <mat-card-title class="title mb-2">{{ game.title }}</mat-card-title>
+    <mat-card-subtitle>Mapa: {{ game.map }}</mat-card-subtitle>
+    <mat-card-subtitle>Tiempo: {{ game.time | millisecondsToHours }}</mat-card-subtitle>
+    <mat-card-subtitle>Áreas: {{ game.areas }}</mat-card-subtitle>
+    <mat-card-subtitle>Territorios: {{ game.territories }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="content">
+    <mat-card-title class="subtitle mb-2">Imperios:</mat-card-title>
+    <mat-card-content class="empireList pt-0">
+      <div class="row jc-center">
+
+        <div *ngFor="let empire of game.empires" class="col-auto pt-3">
+          <div class="empireCard bg-{{empire.color}}">
+            <div class="empireName color-{{empire.contrast}}">{{ empire.name }}</div>
+            <div class="empirePercentage color-{{empire.contrast}}">{{ empire.percentage + ' %' }}</div>
+          </div>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card-content>
+
+</mat-card>
+
+<!-- TODO Diseñar tarjeta vertical resolución pequeña -->
+<mat-card class="main-container small-card">
+
+  <div class="image">
+    <img mat-card-image src="{{ game.image }}" alt="{{ game.title }}">
+    <mat-card-actions class="actions">
+      <button mat-icon-button class="color-darkgray mb-1" matTooltip="Jugar" matTooltipPosition="left">
+        <mat-icon>casino</mat-icon>
+      </button>
+      <button mat-icon-button class="color-actionRed" matTooltip="Eliminar" matTooltipPosition="left">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </div>
+  
+  <mat-card-header class="header">
+    <mat-card-title class="title mb-2">{{ game.title }}</mat-card-title>
+    <mat-card-subtitle>Mapa: {{ game.map }}</mat-card-subtitle>
+    <mat-card-subtitle>Tiempo: {{ game.time | millisecondsToHours }}</mat-card-subtitle>
+    <mat-card-subtitle>Áreas: {{ game.areas }}</mat-card-subtitle>
+    <mat-card-subtitle>Territorios: {{ game.territories }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="content">
+    <mat-card-title class="subtitle mb-2">Imperios:</mat-card-title>
+    <mat-card-content class="empireList pt-0">
+      <div class="row jc-center">
+
+        <div *ngFor="let empire of game.empires" class="col-auto pt-3">
+          <div class="empireCard bg-{{empire.color}}">
+            <div class="empireName color-{{empire.contrast}}">{{ empire.name }}</div>
+            <div class="empirePercentage color-{{empire.contrast}}">{{ empire.percentage + ' %' }}</div>
+          </div>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card-content>
+
+</mat-card>

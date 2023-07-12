@@ -25,5 +25,8 @@
 .content{
   padding-top: 16px;
   overflow-y: auto;
-  max-height: 405px;
+  max-height: 358px;
+  .jc-center{
+    justify-content: center;
+  }
 }

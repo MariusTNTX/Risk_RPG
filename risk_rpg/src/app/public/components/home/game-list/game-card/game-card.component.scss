@@ -1,0 +1,97 @@
+@import "src/assets/scss/_colors.scss";
+
+.main-container {
+  border: 1px solid $darkgray;
+  box-shadow: 3px 3px 10px $darkgray;
+  flex-direction: row;
+  max-height: 160px;
+}
+
+.image {
+  position: relative;
+  border-left: 7px solid $darkgray;
+}
+
+.image img {
+  height: 159px;
+}
+
+.actions {
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: #ffffff, $alpha: 0.5)
+  }
+}
+
+.header {
+  border-left: 3px solid $darkgray;
+  margin: 0px;
+  min-width: 260px;
+}
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+.content {
+  border-left: 1px solid $darkgray;
+  padding-top: 16px;
+  margin: 0px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 18px;
+}
+.subtitle {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.empireList {
+  padding-top: 16px;
+  overflow-y: auto;
+  max-height: 358px;
+  height: 95px;
+  background-color: $gray;
+  border-radius: 5px;
+  .jc-center{
+    justify-content: center;
+  }
+  .empireCard{
+    max-width: 200px;
+    text-align: center;
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px gray;
+    .empireName{
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .empirePercentage{
+      font-weight: bold;
+      font-size: 12px;
+    }
+  }
+}
+
+.big-card {
+  display: flex;
+}
+.small-card{
+  display: none;
+}
+
+@media only screen and (max-width: 900px) { //Resolución Pequeña
+  .big-card {
+    display: none;
+  }
+  .small-card{
+    display: flex;
+  }
+}

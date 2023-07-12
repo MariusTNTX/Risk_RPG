@@ -5,7 +5,6 @@ import { MapManagerComponent } from './components/map-manager/map-manager.compon
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { HomeComponent } from './components/home/home.component';
 
-//TODO En la ruta '' no muestra Home
 const routes: Routes = [
   {
     path: '',

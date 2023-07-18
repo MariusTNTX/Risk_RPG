@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MapIntf } from 'src/app/public/models/interfaces/mapIntf';
+import { mapList } from 'src/app/public/models/lists_and_objects/mapList';
 
 @Component({
   selector: 'app-map-list',
@@ -6,38 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./map-list.component.scss']
 })
 export class MapListComponent {
-  public mapList: any[] = [
-    {
-      image: '../../../../../assets/images/map-example.jpg',
-      title: 'La Tierra',
-      areas: '6',
-      territories: '193'
-    },
-    {
-      image: '../../../../../assets/images/map-example.jpg',
-      title: 'La Tierra',
-      areas: '6',
-      territories: '193'
-    },
-    {
-      image: '../../../../../assets/images/map-example.jpg',
-      title: 'La Tierra',
-      areas: '6',
-      territories: '193'
-    },
-    {
-      image: '../../../../../assets/images/map-example.jpg',
-      title: 'La Tierra',
-      areas: '6',
-      territories: '193'
-    },
-    {
-      image: '../../../../../assets/images/map-example.jpg',
-      title: 'La Tierra',
-      areas: '6',
-      territories: '193'
-    },
-  ];
+  public mapList: MapIntf[] = mapList;
 
   constructor(){ }
 }

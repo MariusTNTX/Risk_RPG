@@ -1,9 +1,11 @@
+@import "src/assets/scss/_colors.scss";
+
 .main-container {
   padding: 20px;
 }
 
 .element {
   margin: 10px 0;
-  background-color: white;
+  background-color: $white;
   border-radius: 10px;
 }

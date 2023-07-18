@@ -11,7 +11,8 @@ export class ApiService {
   
   constructor(
     private httpClient: HttpClient, 
-    private configService: ConfigService){ }
+    private configService: ConfigService
+  ){ }
 
   ngOnInit(){
     this.REST_API_SERVER = this.configService.hostApi;

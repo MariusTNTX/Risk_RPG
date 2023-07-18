@@ -32,7 +32,6 @@
             "styles": [
               "src/styles.scss",
               "src/assets/scss/_colors.scss",
-              "src/assets/scss/_spacers.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []

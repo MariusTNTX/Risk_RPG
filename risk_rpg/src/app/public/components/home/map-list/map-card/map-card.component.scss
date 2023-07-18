@@ -9,6 +9,9 @@
 .header{
   border-top: 3px solid $darkgray;
   flex-direction: column;
+  .header-info{
+    font-weight: bold;
+  }
 }
 
 .title{

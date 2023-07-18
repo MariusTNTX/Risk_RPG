@@ -1,13 +1,13 @@
 <mat-card>
-  <mat-card-header class="header bg-green">
+  <mat-card-header class="header bg-lightGreen">
     <mat-card-title class="title">Lista de Partidas</mat-card-title>
-    <button mat-button class="addButton">
+    <button mat-button class="addButton" routerLink="/newGame">
       <mat-icon class="icon">add</mat-icon>Crear
     </button>
   </mat-card-header>
 
   <mat-card-content class="content">
-    <div class="row">
+    <div class="row jc-center">
       <div *ngFor="let game of gameList" class="col-auto py-3">
         <app-game-card [game]="game"></app-game-card>
       </div>

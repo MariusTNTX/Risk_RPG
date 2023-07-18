@@ -6,7 +6,9 @@ import { PublicComponent } from './public.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -18,6 +20,7 @@ import { GameListComponent } from './components/home/game-list/game-list.compone
 import { MapCardComponent } from './components/home/map-list/map-card/map-card.component';
 import { GameCardComponent } from './components/home/game-list/game-card/game-card.component';
 import { MillisecondsToHoursPipe } from './pipes/milliseconds-to-hours.pipe';
+import { ConfirmDialogComponent } from './components/util/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +32,17 @@ import { MillisecondsToHoursPipe } from './pipes/milliseconds-to-hours.pipe';
     GameListComponent,
     MapCardComponent,
     GameCardComponent,
-    MillisecondsToHoursPipe
+    MillisecondsToHoursPipe,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatListModule,
     MatToolbarModule, 
     MatTooltipModule,
     PublicRoutingModule,

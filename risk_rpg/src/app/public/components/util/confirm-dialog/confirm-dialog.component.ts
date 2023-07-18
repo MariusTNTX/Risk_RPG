@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ConfirmDialogAcceptButtonColorIntf } from 'src/app/public/models/interfaces/confirmDialogAcceptButtonColorIntf';
+import { ColorIntf } from 'src/app/public/models/interfaces/colorIntf';
 import { ConfirmDialogDataIntf } from 'src/app/public/models/interfaces/confirmDialogDataIntf';
-import { confirmDialogColorList } from 'src/app/public/models/lists_and_objects/confirmDialogColorList'
+import { confirmDialogColorList } from 'src/app/public/models/lists_and_objects/confirmDialogColorList';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -18,7 +18,7 @@ export class ConfirmDialogComponent {
     - 'color': Color del botón de aceptar
   ---------------------------------------------------- */
 
-  public acceptButtonColor!: ConfirmDialogAcceptButtonColorIntf;
+  public acceptButtonColor!: ColorIntf;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogDataIntf,

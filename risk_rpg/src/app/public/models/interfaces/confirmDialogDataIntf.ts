@@ -1,5 +1,7 @@
+import { ConfirmDialogColorEnum } from "../enums/confirmDialogColorEnum";
+
 export interface ConfirmDialogDataIntf {
   title: string,
   content: string,
-  color: number | null
+  color: ConfirmDialogColorEnum.BLUE | ConfirmDialogColorEnum.RED | ConfirmDialogColorEnum.GREEN
 }

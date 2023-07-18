@@ -9,27 +9,43 @@ $black: black;
 $lightgray: lightgray;
 .bg-lightGray{ background-color: $lightgray }
 .color-lightGray{ color: $lightgray }
-
 $gray: gray;
 .bg-gray{ background-color: $gray }
 .color-gray{ color: $gray }
-
 $darkgray: darkslategray;
 .bg-darkgray{ background-color: $darkgray }
 .color-darkgray{ color: $darkgray }
 
-$lightGreen: rgba(0,255,0,.05);
+$lightRed: darkred;
+.bg-lightRed{ background-color: $lightRed }
+.color-lightRed{ color: $lightRed }
+$red: darkred;
+.bg-red{ background-color: $red }
+.color-red{ color: $red }
+$darkRed: darkred; //----------------------------
+.bg-darkRed{ background-color: $darkRed }
+.color-darkRed{ color: $darkRed }
+
+$lightGreen: rgba(0,255,0,.05); //---------------
 .bg-lightGreen{ background-color: $lightGreen }
 .color-lightGreen{ color: $lightGreen }
+$green: rgba(0,255,0,.05);
+.bg-green{ background-color: $green }
+.color-green{ color: $green }
+$darkGreen: rgba(0,255,0,.05);
+.bg-darkGreen{ background-color: $darkGreen }
+.color-darkGreen{ color: $darkGreen }
+
+$lightBlue: royalblue;
+.bg-lightBlue{ background-color: $lightBlue }
+.color-lightBlue{ color: $lightBlue }
+$blue: royalblue; //-----------------------------
+.bg-blue{ background-color: $blue }
+.color-blue{ color: $blue }
+$darkBlue: royalblue;
+.bg-darkBlue{ background-color: $darkBlue }
+.color-darkBlue{ color: $darkBlue }
 
 $purple: darkslateblue;
 .bg-purple{ background-color: $purple }
 .color-purple{ color: $purple }
-
-$actionBlue: royalblue;
-.bg-actionBlue{ background-color: $actionBlue }
-.color-actionBlue{ color: $actionBlue }
-
-$actionRed: darkred;
-.bg-actionRed{ background-color: $actionRed }
-.color-actionRed{ color: $actionRed }

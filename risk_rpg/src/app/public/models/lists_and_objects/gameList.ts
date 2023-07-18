@@ -12,7 +12,7 @@ export const gameList: GameIntf[] = [
       {
         name: 'Asgard Kingdom',
         color: {
-          main: 'actionRed',
+          main: 'red',
           contrast: 'white'
         },
         percentage: 40
@@ -20,7 +20,7 @@ export const gameList: GameIntf[] = [
       {
         name: 'Draconians',
         color: {
-          main: 'actionBlue',
+          main: 'blue',
           contrast: 'white'
         },
         percentage: 28
@@ -62,7 +62,7 @@ export const gameList: GameIntf[] = [
       {
         name: 'Asgard Kingdom',
         color: {
-          main: 'actionRed',
+          main: 'red',
           contrast: 'white'
         },
         percentage: 40
@@ -70,7 +70,7 @@ export const gameList: GameIntf[] = [
       {
         name: 'Draconians',
         color: {
-          main: 'actionBlue',
+          main: 'blue',
           contrast: 'white'
         },
         percentage: 28

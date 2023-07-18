@@ -1,7 +1,7 @@
-import { ConfirmDialogAcceptButtonColorIntf } from "../interfaces/confirmDialogAcceptButtonColorIntf";
+import { ColorIntf } from "../interfaces/colorIntf";
 
-export const confirmDialogColorList: ConfirmDialogAcceptButtonColorIntf[] = [
-  { background: 'actionBlue', color: 'white' },
-  { background: 'actionRed', color: 'white' },
-  { background: 'darkgray', color: 'white' },
+export const confirmDialogColorList: ColorIntf[] = [
+  { main: 'blue', contrast: 'white' },
+  { main: 'red', contrast: 'white' },
+  { main: 'darkgray', contrast: 'white' },
 ];

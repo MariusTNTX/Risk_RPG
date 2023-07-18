@@ -1,4 +1,4 @@
 export interface ColorIntf {
   main: string,
-  contrast: string
-}
+  contrast?: 'white' | 'black'
+};

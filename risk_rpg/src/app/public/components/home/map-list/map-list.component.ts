@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MapIntf } from 'src/app/public/models/interfaces/mapIntf';
-import { mapList } from 'src/app/public/models/lists_and_objects/mapList';
+import { MapService } from 'src/app/public/services/map.service';
 
 @Component({
   selector: 'app-map-list',
@@ -8,7 +8,13 @@ import { mapList } from 'src/app/public/models/lists_and_objects/mapList';
   styleUrls: ['./map-list.component.scss']
 })
 export class MapListComponent {
-  public mapList: MapIntf[] = mapList;
+  public mapList!: MapIntf[];
 
-  constructor(){ }
+  constructor(private _mapService: MapService){ }
+
+  ngOnInit(){
+    this._mapService.getMaps().subscribe((rs: any) => {
+      this.mapList = rs;
+    });
+  }
 }

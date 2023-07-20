@@ -14,16 +14,16 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
       },
-      {
-        path: 'mapManager',
-        component: MapManagerComponent,
-      },
-      {
-        path: 'newGame',
-        component: NewGameComponent,
-      }
     ]
-  }
+  },
+  {
+    path: 'mapManager',
+    component: MapManagerComponent,
+  },
+  {
+    path: 'newGame',
+    component: NewGameComponent,
+  },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GameIntf } from 'src/app/public/models/interfaces/gameIntf';
-import { gameList } from 'src/app/public/models/lists_and_objects/gameList';
+import { GameService } from 'src/app/public/services/game.service';
 
 @Component({
   selector: 'app-game-list',
@@ -8,7 +8,13 @@ import { gameList } from 'src/app/public/models/lists_and_objects/gameList';
   styleUrls: ['./game-list.component.scss']
 })
 export class GameListComponent {
-  public gameList: GameIntf[] = gameList;
+  public gameList!: GameIntf[];
 
-  constructor(){ }
+  constructor(private _gameService: GameService){ }
+
+  ngOnInit(){
+    this._gameService.getGames().subscribe((rs: any) => {
+      this.gameList = rs;
+    })
+  }
 }

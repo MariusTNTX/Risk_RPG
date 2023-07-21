@@ -7,4 +7,32 @@ import { Component } from '@angular/core';
 })
 export class MapManagerComponent {
 
+  saveAndExit(){
+    console.log("saveAndExit")
+  }
+  
+  saveAndPlay(){
+    console.log("saveAndPlay")
+  }
+
+  discard(){
+    console.log("discard")
+  }
+
+  addImage(){
+
+  }
+
+  addArea(){
+
+  }
+
+  addTerritory(){
+
+  }
+
+  addConnection(){
+    
+  }
+
 }

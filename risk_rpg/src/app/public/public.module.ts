@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,6 +43,7 @@ import { ConfirmDialogComponent } from './components/util/confirm-dialog/confirm
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatInputModule,
     MatListModule,
     MatToolbarModule, 
     MatTooltipModule,

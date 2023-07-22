@@ -1,6 +1,29 @@
-<h2 mat-dialog-title class="header">Lista de Áreas</h2>
+<h2 mat-dialog-title class="header">LISTA DE ÁREAS</h2>
 
-<mat-dialog-content class="pt-2">Contenido</mat-dialog-content>
+<mat-dialog-content class="pt-2">
+
+  <div class="list-container">
+    <div class="title">Lista</div>
+    <div class="list">
+      <div class="color"></div>
+      <div class="name"></div>
+      <div class="edit"></div>
+      <div class="deelte"></div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="form-container">
+    <div class="title">{{ editMode ? 'Editar' : 'Agregar' }}</div>
+    <div class="form">
+      <div class="color"></div>
+      <div class="name"></div>
+      <div class="action"></div>
+    </div>
+  </div>
+
+</mat-dialog-content>
 
 <mat-dialog-actions class="actions justify-content-end">
 
@@ -10,7 +33,7 @@
 
   <button
     mat-raised-button
-    class="color-{{ 'white' }} bg-{{ 'blue' }}"
+    class="color-white bg-blue"
     (click)="accept()"
   >
     Aceptar

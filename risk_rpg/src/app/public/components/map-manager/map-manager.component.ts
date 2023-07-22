@@ -4,7 +4,7 @@ import { ConfirmDialogColorEnum } from '../../models/enums/confirmDialogColorEnu
 import { NotificationService } from '../../services/notification.service';
 import { ConfirmDialogComponent } from '../util/confirm-dialog/confirm-dialog.component';
 import { MapManagerAreaDialogComponent } from './components/map-manager-area-dialog/map-manager-area-dialog.component';
-import { NotifierService } from 'angular-notifier'; //No quitar
+import { AreaIntf } from '../../models/interfaces/areaIntf';
 
 @Component({
   selector: 'app-map-manager',
@@ -19,7 +19,7 @@ export class MapManagerComponent {
   public canAddTerritory: boolean = false;
   public canAddConnection: boolean = false;
   public selectedImageUrl: string | ArrayBuffer | null = null;
-  public areaList!: any;
+  public areaList!: AreaIntf[];
 
   constructor(
     public dialog: MatDialog,
@@ -77,7 +77,6 @@ export class MapManagerComponent {
 
   addedImage(event: any){
     const selectedFile = event.target.files[0];
-    console.log(selectedFile)
     if (selectedFile) {
       const reader = new FileReader();
       reader.onload = (e: any) => {

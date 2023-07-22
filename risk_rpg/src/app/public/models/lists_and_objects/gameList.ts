@@ -2,6 +2,7 @@ import { GameIntf } from "../interfaces/gameIntf";
 
 export const gameList: GameIntf[] = [
   {
+    id: 1,
     image: '../../../../../assets/images/map-example.jpg',
     title: 'Second Great War',
     map: 'La Tierra',
@@ -52,6 +53,7 @@ export const gameList: GameIntf[] = [
     ]
   },
   {
+    id: 2,
     image: '../../../../../assets/images/map-example.jpg',
     title: 'Second Great War',
     map: 'La Tierra',

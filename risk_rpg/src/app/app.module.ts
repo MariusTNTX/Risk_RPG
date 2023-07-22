@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 
+import { NotifierModule } from 'angular-notifier';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,6 +19,18 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     CoreModule,
     HttpClientModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'right',
+          distance: 20,
+        },
+        vertical: {
+          position: 'top',
+          distance: 20,
+        },
+      },
+    }),
     RouterModule
   ],
   providers: [],

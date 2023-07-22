@@ -1,0 +1,19 @@
+<h2 mat-dialog-title class="header">Lista de Áreas</h2>
+
+<mat-dialog-content class="pt-2">Contenido</mat-dialog-content>
+
+<mat-dialog-actions class="actions justify-content-end">
+
+  <button mat-button mat-dialog-close>
+    Cancelar
+  </button>
+
+  <button
+    mat-raised-button
+    class="color-{{ 'white' }} bg-{{ 'blue' }}"
+    (click)="accept()"
+  >
+    Aceptar
+  </button>
+
+</mat-dialog-actions>

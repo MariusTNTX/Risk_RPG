@@ -23,9 +23,12 @@
     <div class="header">
       <div class="map-name">
         <mat-form-field hintLabel="Máximo 20 caracteres">
-          <mat-label>Pon nombre a tu mapa</mat-label>
-          <input matInput #input maxlength="20" placeholder="">
+          <mat-label>Nombre del Mapa</mat-label>
+          <input matInput #input required [(ngModel)]="mapName" maxlength="20" placeholder="">
           <mat-hint align="end">{{ input.value.length }}/20</mat-hint>
+          <mat-error *ngIf="!mapName">
+            Debes indicar el nombre del mapa
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -35,21 +38,22 @@
             <mat-icon>add</mat-icon>
             <span>Imágen</span>
           </button>
+          <input type="file" #fileInput hidden (change)="addedImage($event)">
         </div>
         <div class="action add-super-territory">
-          <button mat-button (click)="addArea()">
+          <button mat-button [disabled]="!selectedImageUrl" [ngClass]="{'disabled-button': !selectedImageUrl}" (click)="addArea()">
             <mat-icon>add</mat-icon>
             <span>Área</span>
           </button>
         </div>
         <div class="action add-territory">
-          <button mat-button (click)="addTerritory()">
+          <button mat-button [disabled]="!canAddTerritory" [ngClass]="{'disabled-button': !canAddTerritory}" (click)="addTerritory()">
             <mat-icon>add</mat-icon>
             <span>Territorio</span>
           </button>
         </div>
         <div class="action add-connection">
-          <button mat-button (click)="addConnection()">
+          <button mat-button [disabled]="!canAddConnection" [ngClass]="{'disabled-button': !canAddConnection}" (click)="addConnection()">
             <mat-icon>add</mat-icon>
             <span>Conexión</span>
           </button>
@@ -66,8 +70,9 @@
       </div>
     </div>
     
-    <div class="map-container">
-      MAPA
+    <div class="map-container" [ngClass]="{'bg-white': !selectedImageUrl}">
+      <span *ngIf="!selectedImageUrl">Añade una imágen de mapa</span>
+      <img [src]="selectedImageUrl" *ngIf="selectedImageUrl" class="map-image">
     </div>
 
   </div>

@@ -33,6 +33,8 @@ $risk_rpg-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($risk_rpg-theme);
 
+@import "node_modules/angular-notifier/styles";
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { min-height: 100%; }

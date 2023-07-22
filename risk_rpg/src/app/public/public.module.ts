@@ -22,6 +22,9 @@ import { MapCardComponent } from './components/home/map-list/map-card/map-card.c
 import { GameCardComponent } from './components/home/game-list/game-card/game-card.component';
 import { MillisecondsToHoursPipe } from './pipes/milliseconds-to-hours.pipe';
 import { ConfirmDialogComponent } from './components/util/confirm-dialog/confirm-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MapManagerAreaDialogComponent } from './components/map-manager/components/map-manager-area-dialog/map-manager-area-dialog.component';
+import { MapManagerTerritoryDialogComponent } from './components/map-manager/components/map-manager-territory-dialog/map-manager-territory-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +37,13 @@ import { ConfirmDialogComponent } from './components/util/confirm-dialog/confirm
     MapCardComponent,
     GameCardComponent,
     MillisecondsToHoursPipe,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    MapManagerAreaDialogComponent,
+    MapManagerTerritoryDialogComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,

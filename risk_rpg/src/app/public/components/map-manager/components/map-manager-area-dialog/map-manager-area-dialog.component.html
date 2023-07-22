@@ -5,14 +5,22 @@
   <div class="list-container">
     <div class="title">Lista</div>
     <div class="list">
-      <div class="color"></div>
-      <div class="name"></div>
-      <div class="edit"></div>
-      <div class="deelte"></div>
+      <div *ngFor="let area of areaList" class="list-item">
+        <div class="content">
+          <div class="color bg-{{ area.color.main }}"></div>
+          <div class="name">{{ area.name }}</div>
+        </div>
+        <div class="actions">
+          <button mat-icon-button class="edit" (click)="editArea()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="delete" (click)="deleteArea()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-
-  <mat-divider></mat-divider>
 
   <div class="form-container">
     <div class="title">{{ editMode ? 'Editar' : 'Agregar' }}</div>

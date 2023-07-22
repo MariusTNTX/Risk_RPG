@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ColorEnum } from 'src/app/public/models/enums/colorEnum';
 import { AreaIntf } from 'src/app/public/models/interfaces/areaIntf';
+import { colorList } from 'src/app/public/models/lists_and_objects/colorList';
 
 @Component({
   selector: 'app-map-manager-area-dialog',
@@ -17,7 +19,22 @@ export class MapManagerAreaDialogComponent {
     public dialogRef: MatDialogRef<MapManagerAreaDialogComponent>
   ) { }
 
-  ngOnInit(){ }
+  ngOnInit(){ 
+    //Provisional:
+    this.areaList = [
+      { color: colorList[ColorEnum.RED], name: 'Asia' },
+      { color: colorList[ColorEnum.BLUE], name: 'América' },
+      { color: colorList[ColorEnum.GREEN], name: 'Europa' },
+      { color: colorList[ColorEnum.BLACK], name: 'África' },
+      { color: colorList[ColorEnum.YELLOW], name: 'Oceanía' },
+      { color: colorList[ColorEnum.WHITE], name: 'Antártida' },
+    ]
+  }
+
+
+  editArea(){ }
+
+  deleteArea(){ }
 
   accept(){ }
 

@@ -1,6 +1,6 @@
 <div class="main-container">
 
-  <mat-toolbar class="toolbar-container bg-darkgray">
+  <mat-toolbar class="toolbar-container bg-darkGreen">
     <span class="toolbar-title color-white">NUEVO MAPA</span>
     <span class="toolbar-spacer"></span>
     <div class="toolbar-options">
@@ -41,7 +41,7 @@
           <input type="file" #fileInput hidden (change)="addedImage($event)">
         </div>
         <div class="action add-super-territory">
-          <button mat-button [disabled]="!selectedImageUrl" [ngClass]="{'disabled-button': !selectedImageUrl}" (click)="addArea()">
+          <button mat-button (click)="addArea()"><!--  [disabled]="!selectedImageUrl" [ngClass]="{'disabled-button': !selectedImageUrl}" -->
             <mat-icon>add</mat-icon>
             <span>Área</span>
           </button>

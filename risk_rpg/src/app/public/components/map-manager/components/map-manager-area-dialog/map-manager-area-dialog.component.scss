@@ -5,24 +5,39 @@
 }
 
 .title{
-
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid $lightGray;
+  margin-bottom: 5px;
 }
 
 .list-container{
-
+  margin-bottom: 10px;
   .list{
+    .list-item{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 32px;
+      .content{
+        display: flex;
+        .color{
+          height: 20px;
+          width: 20px;
+          border: 1px solid $gray;
+        }
+        .name{
+          margin: 0 10px;
+        }
+      }
+      .actions{
+        .edit{
+  
+        }
+        .delete{
     
-    .color{
-      
-    }
-    .name{
-
-    }
-    .edit{
-
-    }
-    .delete{
-
+        }
+      }
     }
   }
 }

@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: $lightgray;
+  background-color: $lightGray;
 }
 
 .toolbar-container {
@@ -105,7 +105,7 @@
   font-size: 20px;
   .map-image{
     max-width: 100%;
-    border: 5px solid $darkgray;
+    border: 5px solid $darkGreen;
     border-radius: 8px;
   }
 }

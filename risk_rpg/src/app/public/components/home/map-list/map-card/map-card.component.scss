@@ -1,13 +1,13 @@
 @import "src/assets/scss/_colors.scss";
 
 .main-container {
-  border: 1px solid $darkgray;
-  box-shadow: 3px 3px 10px $darkgray;
+  border: 1px solid $darkGreen;
+  box-shadow: 3px 3px 10px $darkGreen;
   width: 210px;
 }
 
 .header{
-  border-top: 3px solid $darkgray;
+  border-top: 3px solid $darkGreen;
   flex-direction: column;
   .header-info{
     font-weight: bold;

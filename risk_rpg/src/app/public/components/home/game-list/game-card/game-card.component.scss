@@ -5,8 +5,8 @@
 }
 
 .main-container {
-  border: 1px solid $darkgray;
-  box-shadow: 3px 3px 10px $darkgray;
+  border: 1px solid $darkGreen;
+  box-shadow: 3px 3px 10px $darkGreen;
 }
 .big-card.main-container {
   flex-direction: row;
@@ -14,17 +14,17 @@
 }
 .small-card.main-container {
   max-width: 271px;
-  border-left: 7px solid $darkgray;
+  border-left: 7px solid $darkGreen;
 }
 
 .image {
   position: relative;
 }
 .big-card .image {
-  border-left: 7px solid $darkgray;
+  border-left: 7px solid $darkGreen;
 }
 .small-card .image {
-  border-bottom: 3px solid $darkgray;
+  border-bottom: 3px solid $darkGreen;
 }
 
 .image img {
@@ -53,7 +53,7 @@
   }
 }
 .big-card .header {
-  border-left: 3px solid $darkgray;
+  border-left: 3px solid $darkGreen;
 }
 
 .toolbar-spacer {
@@ -65,7 +65,7 @@
   margin: 0px;
 }
 .big-card .content {
-  border-left: 1px solid $darkgray;
+  border-left: 1px solid $darkGreen;
 }
 
 .title {
@@ -84,7 +84,7 @@
   overflow-y: auto;
   max-height: 359px;
   height: 95px;
-  background-color: $lightgray;
+  background-color: $lightGray;
   border-radius: 5px;
 }
 
@@ -103,7 +103,7 @@
 .empireColor{
   height: 20px;
   width: 20px;
-  border: 1px solid $lightgray;
+  border: 1px solid $lightGray;
 }
 
 .empireName{

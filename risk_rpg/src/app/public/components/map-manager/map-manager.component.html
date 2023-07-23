@@ -54,7 +54,7 @@
           <div *ngIf="showTPoint" class="t-point" [style.left.px]="tPointX" [style.top.px]="tPointY"></div>
         </div>
         <div class="action add-connection">
-          <button mat-button [disabled]="!canAddConnection" [ngClass]="{'disabled-button': !canAddConnection}" (click)="addConnection()">
+          <button mat-button [disabled]="territoryList.length < 2" [ngClass]="{'disabled-button': territoryList.length < 2}" (click)="addConnection()">
             <mat-icon>add</mat-icon>
             <span>Conexión</span>
           </button>
@@ -63,9 +63,9 @@
 
       <div class="map-counter">
         <mat-list>
-          <mat-list-item><b>Áreas</b>: {{ '00' }}</mat-list-item>
+          <mat-list-item><b>Áreas</b>: {{ areaList ? areaList.length : 0 }}</mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item><b>Territorios</b>: {{ '000' }}</mat-list-item>
+          <mat-list-item><b>Territorios</b>: {{ territoryList ? territoryList.length : 0 }}</mat-list-item>
           <mat-divider></mat-divider>
         </mat-list>
       </div>

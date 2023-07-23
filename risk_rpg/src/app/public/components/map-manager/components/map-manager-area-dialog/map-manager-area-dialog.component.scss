@@ -4,61 +4,115 @@
   font-weight: bold;
 }
 
+.dialog-content{
+  padding-bottom: 10px;
+}
+
 .title{
   font-weight: bold;
   text-align: center;
-  border-bottom: 1px solid $lightGray;
-  margin-bottom: 5px;
+  border-bottom: 1px solid $gray;
+  margin-bottom: 8px;
 }
 
 .list-container{
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   .list{
     .list-item{
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 32px;
+      border-bottom: 1px solid $lightGray;
       .content{
         display: flex;
         .color{
           height: 20px;
           width: 20px;
           border: 1px solid $gray;
+          margin-top: 2px;
+          border-radius: 5px;
         }
         .name{
           margin: 0 10px;
         }
       }
       .actions{
+        padding: 0px;
         .edit{
-  
+          margin-top: 8px;
         }
         .delete{
-    
+          margin-top: 8px;
         }
       }
+    }
+    .no-areas{
+      text-align: center;
+      font-style: italic;
+      margin-top: 20px;
     }
   }
 }
 
 .form-container{
-
+  border-bottom: 1px solid $lightGray;
+  padding-bottom: 20px;
   .form{
-
-    .color{
-      
-    }
-    .name{
-
+    margin-top: 12px;
+    .fields{
+      display: flex;
+      .color{
+        margin-right: 5px;
+      }
+      .name{
+        margin-left: 5px;
+      }
+      mat-error{
+        font-size: 12px;
+      }
     }
     .action{
-
+      text-align: center;
     }
   }
+}
+
+.int-item{
+  display: flex;
+  align-items: center;
+  .int-color{
+    height: 20px;
+    width: 20px;
+    border: 1px solid $gray;
+    margin-top: 2px;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+}
+
+button.disabled-button{
+  background-color: $gray;
 }
 
 .actions{
   margin-bottom: 10px;
   padding: 0px 24px;
+}
+
+@media (max-width: 605px) {
+  .fields{
+    flex-direction: column;
+  }
+  .fields.color, .fields.name{
+    margin: 0px !important;
+  }
+  .fields mat-form-field{
+    width: 100%;
+  }
+  .actions .edit, .actions .delete{
+    padding: 0px;
+    height: 30px;
+    width: 30px;
+  }
 }

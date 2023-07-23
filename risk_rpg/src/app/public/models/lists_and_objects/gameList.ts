@@ -1,4 +1,6 @@
+import { ColorEnum } from "../enums/colorEnum";
 import { GameIntf } from "../interfaces/gameIntf";
+import { colorList } from "./colorList";
 
 export const gameList: GameIntf[] = [
   {
@@ -12,42 +14,27 @@ export const gameList: GameIntf[] = [
     empires: [
       {
         name: 'Asgard Kingdom',
-        color: {
-          main: 'red',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.RED],
         percentage: 40
       },
       {
         name: 'Draconians',
-        color: {
-          main: 'blue',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.BLUE],
         percentage: 28
       },
       {
         name: 'Sun Supremacy',
-        color: {
-          main: 'purple',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.PURPLE],
         percentage: 22
       },
       {
         name: 'Irgaheym',
-        color: {
-          main: 'black',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.BLACK],
         percentage: 15
       },
       {
         name: 'Holy Montain',
-        color: {
-          main: 'white',
-          contrast: 'black'
-        },
+        color: colorList[ColorEnum.WHITE],
         percentage: 5
       },
     ]
@@ -63,42 +50,27 @@ export const gameList: GameIntf[] = [
     empires: [
       {
         name: 'Asgard Kingdom',
-        color: {
-          main: 'red',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.RED],
         percentage: 40
       },
       {
         name: 'Draconians',
-        color: {
-          main: 'blue',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.BLUE],
         percentage: 28
       },
       {
         name: 'Sun Supremacy',
-        color: {
-          main: 'purple',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.PURPLE],
         percentage: 22
       },
       {
         name: 'Irgaheym',
-        color: {
-          main: 'black',
-          contrast: 'white'
-        },
+        color: colorList[ColorEnum.BLACK],
         percentage: 15
       },
       {
         name: 'Holy Montain',
-        color: {
-          main: 'white',
-          contrast: 'black'
-        },
+        color: colorList[ColorEnum.WHITE],
         percentage: 5
       },
     ]

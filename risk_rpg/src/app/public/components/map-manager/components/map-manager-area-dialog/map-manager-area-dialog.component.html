@@ -1,6 +1,6 @@
 <h2 mat-dialog-title class="header">LISTA DE ÁREAS</h2>
 
-<mat-dialog-content class="pt-2">
+<mat-dialog-content class="dialog-content pt-2">
 
   <div class="list-container">
     <div class="title">Lista</div>
@@ -19,15 +19,47 @@
           </button>
         </div>
       </div>
+      <div *ngIf="areaList!.length === 0" class="no-areas">No Existen Áreas de Mapa</div>
     </div>
   </div>
 
   <div class="form-container">
     <div class="title">{{ editMode ? 'Editar' : 'Agregar' }}</div>
     <div class="form">
-      <div class="color"></div>
-      <div class="name"></div>
-      <div class="action"></div>
+      <div class="fields">
+        <div class="color">
+          <mat-form-field>
+            <mat-label>Color de Área</mat-label>
+            <mat-select #select [(ngModel)]="areaColor">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let color of colorList" [value]="color">
+                <div class="int-item">
+                  <div class="int-color bg-{{ color.main }}"></div>
+                  <div>{{ color.name }}</div>
+                </div>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="name">
+          <mat-form-field>
+            <mat-label>Nombre de Área</mat-label>
+            <input matInput #input [(ngModel)]="areaName" maxlength="10" placeholder="">
+            <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="action">
+        <button
+          mat-button
+          [disabled]="!areaColor || !areaName"
+          [ngClass]="{'disabled-button': !areaColor || !areaName}"
+          class="color-white bg-blue"
+          (click)="editMode ? applyEdition() : applyAddition()"
+        >
+          Aplicar
+        </button>
+      </div>
     </div>
   </div>
 
@@ -44,7 +76,7 @@
     class="color-white bg-blue"
     (click)="accept()"
   >
-    Aceptar
+    Guardar Cambios
   </button>
 
 </mat-dialog-actions>

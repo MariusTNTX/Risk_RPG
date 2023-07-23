@@ -5,16 +5,16 @@
   <div class="list-container">
     <div class="title">Lista</div>
     <div class="list">
-      <div *ngFor="let area of areaList" class="list-item">
+      <div *ngFor="let area of areaList; let i = index;" class="list-item">
         <div class="content">
           <div class="color bg-{{ area.color.main }}"></div>
           <div class="name">{{ area.name }}</div>
         </div>
         <div class="actions">
-          <button mat-icon-button class="edit" (click)="editArea()">
+          <button mat-icon-button class="edit" (click)="editArea(i)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button class="delete" (click)="deleteArea()">
+          <button mat-icon-button class="delete" (click)="deleteArea(i)">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
@@ -51,6 +51,14 @@
       </div>
       <div class="action">
         <button
+          *ngIf="editMode"
+          mat-button
+          class="discard"
+          (click)="discardEdition()"
+        >
+          Descartar
+        </button>
+        <button
           mat-button
           [disabled]="!areaColor || !areaName"
           [ngClass]="{'disabled-button': !areaColor || !areaName}"
@@ -73,6 +81,8 @@
 
   <button
     mat-raised-button
+    [disabled]="dataIsEqual()"
+    [ngClass]="{'disabled-button': dataIsEqual()}"
     class="color-white bg-blue"
     (click)="accept()"
   >

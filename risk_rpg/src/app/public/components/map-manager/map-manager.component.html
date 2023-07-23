@@ -41,16 +41,17 @@
           <input type="file" #fileInput hidden (change)="addedImage($event)">
         </div>
         <div class="action add-super-territory">
-          <button mat-button (click)="addArea()"><!--  [disabled]="!selectedImageUrl" [ngClass]="{'disabled-button': !selectedImageUrl}" -->
+          <button mat-button [disabled]="!selectedImageUrl" [ngClass]="{'disabled-button': !selectedImageUrl}" (click)="addArea()">
             <mat-icon>add</mat-icon>
             <span>Área</span>
           </button>
         </div>
         <div class="action add-territory">
-          <button mat-button [disabled]="!canAddTerritory" [ngClass]="{'disabled-button': !canAddTerritory}" (click)="addTerritory()">
+          <button mat-button [disabled]="areaList.length === 0" [ngClass]="{'disabled-button': areaList.length === 0}" (click)="addTerritory()">
             <mat-icon>add</mat-icon>
             <span>Territorio</span>
           </button>
+          <div *ngIf="showTPoint" class="t-point" [style.left.px]="tPointX" [style.top.px]="tPointY"></div>
         </div>
         <div class="action add-connection">
           <button mat-button [disabled]="!canAddConnection" [ngClass]="{'disabled-button': !canAddConnection}" (click)="addConnection()">

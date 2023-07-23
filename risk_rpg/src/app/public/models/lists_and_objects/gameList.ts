@@ -14,7 +14,7 @@ export const gameList: GameIntf[] = [
     empires: [
       {
         name: 'Asgard Kingdom',
-        color: colorList[ColorEnum.RED],
+        color: colorList[ColorEnum.DARK_RED],
         percentage: 40
       },
       {
@@ -50,7 +50,7 @@ export const gameList: GameIntf[] = [
     empires: [
       {
         name: 'Asgard Kingdom',
-        color: colorList[ColorEnum.RED],
+        color: colorList[ColorEnum.DARK_RED],
         percentage: 40
       },
       {

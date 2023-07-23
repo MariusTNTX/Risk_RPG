@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogColorEnum } from '../../models/enums/confirmDialogColorEnum';
 import { NotificationService } from '../../services/notification.service';
@@ -21,10 +21,18 @@ export class MapManagerComponent {
   public selectedImageUrl: string | ArrayBuffer | null = null;
   public areaList!: AreaIntf[];
 
+  public showTPoint: boolean = false;
+  public tPointX: number = 0;
+  public tPointY: number = 0;
+
   constructor(
     public dialog: MatDialog,
     public _notificationService: NotificationService,
   ){}
+
+  ngOnInit(){
+    this.areaList = [];
+  }
 
   validMapName(){
     if(this.mapName.trim().length === 0){
@@ -60,7 +68,6 @@ export class MapManagerComponent {
   }
 
   discard(){
-    console.log("discard")
     const dialog = this.dialog.open(ConfirmDialogComponent, { data: { 
       title: 'Descartar Mapa', 
       content: '¿Deseas descartar todos los cambios efectuados sobre este mapa de forma permanente?',
@@ -87,14 +94,22 @@ export class MapManagerComponent {
   }
 
   addArea(){
-    const dialog = this.dialog.open(MapManagerAreaDialogComponent, { data: {} });
+    const dialog = this.dialog.open(MapManagerAreaDialogComponent, { data: this.areaList });
     dialog.afterClosed().subscribe((rs) => { 
       this.areaList = rs;
     });
   }
 
   addTerritory(){
+    this.showTPoint = !this.showTPoint;
+  }
 
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent): void {
+    if (this.showTPoint) {
+      this.tPointX = event.pageX - 15;
+      this.tPointY = event.pageY - 15;
+    }
   }
 
   addConnection(){

@@ -30,6 +30,6 @@ export class ConfirmDialogComponent {
   }
 
   accept(){
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 }

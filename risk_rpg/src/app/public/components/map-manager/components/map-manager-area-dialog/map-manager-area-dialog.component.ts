@@ -1,9 +1,12 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ColorEnum } from 'src/app/public/models/enums/colorEnum';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { NotificationService } from 'src/app/core/notification.service';
 import { AreaIntf } from 'src/app/public/models/interfaces/areaIntf';
 import { ColorIntf } from 'src/app/public/models/interfaces/colorIntf';
 import { colorList } from 'src/app/public/models/lists_and_objects/colorList';
+import { ConfirmDialogComponent } from '../../../util/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogColorEnum } from 'src/app/public/models/enums/confirmDialogColorEnum';
+import { ColorEnum } from 'src/app/public/models/enums/colorEnum';
 
 @Component({
   selector: 'app-map-manager-area-dialog',
@@ -12,48 +15,78 @@ import { colorList } from 'src/app/public/models/lists_and_objects/colorList';
 })
 export class MapManagerAreaDialogComponent {
 
-  //Model
-  public areaName: string = '';
-  public areaColor!: any;
-
-  //Other
-  public editMode: boolean = false;
-  public areaList!: AreaIntf[];
+  //DATA:
+  public areaList: AreaIntf[] = JSON.parse(JSON.stringify(this.data)); //Copia independiente
   public colorList: ColorIntf[] = colorList;
-  
 
+  //AREA: 
+    //Model
+    public areaName: string = '';
+    public areaColor!: any;
+    //Edit
+    public editMode: boolean = false;
+    private editIndex!: number;
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: MapManagerAreaDialogComponent,
-    public dialogRef: MatDialogRef<MapManagerAreaDialogComponent>
+    public dialogRef: MatDialogRef<MapManagerAreaDialogComponent>,
+    public dialog: MatDialog,
+    public _notificationService: NotificationService,
   ) { }
 
-  ngOnInit(){ 
-    //Provisional:
-    this.areaList = [
-      /* { color: colorList[ColorEnum.RED], name: 'Asia' },
-      { color: colorList[ColorEnum.BLUE], name: 'América' },
-      { color: colorList[ColorEnum.GREEN], name: 'Europa' },
-      { color: colorList[ColorEnum.BLACK], name: 'África' },
-      { color: colorList[ColorEnum.YELLOW], name: 'Oceanía' },
-      { color: colorList[ColorEnum.WHITE], name: 'Antártida' }, */
-    ]
+  dataIsEqual(){
+    return JSON.stringify(this.areaList) === JSON.stringify(this.data);
   }
 
-  editArea(){ }
+  cleanForm(){
+    this.editMode = false;
+    this.areaColor = null;
+    this.areaName = '';
+  }
 
-  deleteArea(){ }
+  editArea(index: number){
+    this.editMode = true;
+    this.editIndex = index;
+    this.areaColor = this.areaList[index].color;
+    this.areaName = this.areaList[index].name;
+  }
+
+  deleteArea(index: number){ 
+    this.cleanForm();
+    const dialog = this.dialog.open(ConfirmDialogComponent, { data: { 
+      title: 'Eliminar Área', 
+      content: '¿Deseas eliminar este área? Todos sus territorios y conexiones se eliminarán',
+      color: ConfirmDialogColorEnum.RED
+    }});
+    dialog.afterClosed().subscribe((accept) => { 
+      if(accept){
+        this.areaList.splice(index, 1);
+      }
+    });
+  }
 
   applyAddition(){ 
     this.areaList.push({
       color: this.areaColor,
       name: this.areaName
     });
-    this.areaColor = null;
-    this.areaName = '';
+    this.cleanForm();
   }
 
-  applyEdition(){ }
+  applyEdition(){ 
+    this.areaList[this.editIndex] = {
+      color: this.areaColor,
+      name: this.areaName
+    };
+    this.cleanForm();
+  }
 
-  accept(){ }
+  discardEdition(){
+    this.cleanForm();
+  }
+
+  accept(){ 
+    this.dialogRef.close(this.areaList);
+  }
 
 }

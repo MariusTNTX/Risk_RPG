@@ -110,6 +110,15 @@
   }
 }
 
+.t-point{
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 5px solid $red;
+  position: absolute;
+  border-radius: 20px;
+}
+
 @media (max-width: 640px) {
   .toolbar-options {
     flex-direction: column;

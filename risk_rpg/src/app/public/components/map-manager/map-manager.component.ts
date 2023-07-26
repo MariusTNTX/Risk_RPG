@@ -15,12 +15,14 @@ export class MapManagerComponent {
 
   @ViewChild('fileInput') fileInput!: ElementRef;
 
+  //DATA:
   public mapName: string = '';
-  public canAddTerritory: boolean = false;
-  public canAddConnection: boolean = false;
   public selectedImageUrl: string | ArrayBuffer | null = null;
   public areaList!: AreaIntf[];
+  public territoryList!: any[];
+  public connectionList!: any[];
 
+  //Coordinates
   public showTPoint: boolean = false;
   public tPointX: number = 0;
   public tPointY: number = 0;

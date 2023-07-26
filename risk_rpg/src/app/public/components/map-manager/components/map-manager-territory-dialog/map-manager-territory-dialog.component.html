@@ -1,19 +1,59 @@
-<h2 mat-dialog-title class="header">Territorio</h2>
+<div class="header">
+  <h2 mat-dialog-title class="title">TERRITORIO</h2>
+  <div>
+    <button mat-icon-button class="delete color-darkRed" (click)="deleteTerritory()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
 
-<mat-dialog-content class="pt-2">Contenido</mat-dialog-content>
+<mat-dialog-content class="dialog-content pt-2">
+
+  <div class="form-container">
+    <div class="name">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput #input [(ngModel)]="territoryName" maxlength="14" placeholder="" required>
+        <mat-hint align="end">{{ input.value.length }}/14</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="area">
+      <mat-form-field>
+        <mat-label>Área</mat-label>
+        <mat-select [(ngModel)]="territoryArea" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let area of areaList" [value]="area">
+            <div class="int-item">
+              <div class="int-color bg-{{ area.color.main }}"></div>
+              <div>{{ area.name }}</div>
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="capital">
+      <section>
+        <mat-checkbox [(ngModel)]="territoryCapital" class="check" [color]="'primary'" [disabled]="false">Capital del Área</mat-checkbox>
+      </section>
+    </div>
+  </div>
+
+</mat-dialog-content>
 
 <mat-dialog-actions class="actions justify-content-end">
 
-  <button mat-button mat-dialog-close>
+  <button mat-button mat-dialog-close *ngIf="canExit">
     Cancelar
   </button>
 
   <button
     mat-raised-button
-    class="color-{{ 'white' }} bg-{{ 'blue' }}"
+    [disabled]="dataIsEqual() || !territoryName || !territoryArea"
+    [ngClass]="{'disabled-button': dataIsEqual() || !territoryName || !territoryArea}"
+    class="color-white bg-blue"
     (click)="accept()"
   >
-    Aceptar
+    Guardar
   </button>
 
 </mat-dialog-actions>

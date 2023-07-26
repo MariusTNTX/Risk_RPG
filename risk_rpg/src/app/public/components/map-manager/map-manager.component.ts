@@ -24,6 +24,7 @@ export class MapManagerComponent {
   public areaList!: AreaIntf[];
   public territoryList!: any[];
   public connectionList!: any[];
+  public nextId: number = 0;
 
   //Coordinates
   public showTPoint: boolean = false;
@@ -38,6 +39,7 @@ export class MapManagerComponent {
 
   ngOnInit(){
     this.areaList = [];
+    this.territoryList = [];
   }
 
   validMapName(){
@@ -134,12 +136,13 @@ export class MapManagerComponent {
   }
 
   addTerritory(x: number, y: number){
-    console.log(x + ' x ' + y);
     const mapContainer = this.mapContainerRef.nativeElement;
     const containerRect = mapContainer.getBoundingClientRect();
     x = x - ( (15 * 100) / containerRect.width );
     y = y - ( (15 * 100) / containerRect.height );
     const newButton = document.createElement('button', { is: 'mat-button' }) as HTMLButtonElement;
+    newButton.id = this.nextId.toString();
+    this.nextId = this.nextId + 1;
     newButton.style.position = 'absolute';
     newButton.style.width = '30px';
     newButton.style.height = '30px';
@@ -150,17 +153,42 @@ export class MapManagerComponent {
     newButton.style.left = x + '%';
     newButton.style.top = y + '%';
     mapContainer.appendChild(newButton);
-    newButton.addEventListener('click', () => this.openMapDialog(x, y, newButton, false));
-    this.openMapDialog(x, y, newButton, true);
+    newButton.addEventListener('click', (event: any) => this.openMapDialog(x, y, newButton, true, event.target.id));
+    this.openMapDialog(x, y, newButton, false, newButton.id);
   }
 
-  openMapDialog(x: number, y: number, newButton: HTMLButtonElement, canExit: boolean){
-    const dialog = this.dialog.open(MapManagerTerritoryDialogComponent, { data: { x, y, newButton, canExit }, disableClose: true });
-    dialog.afterClosed().subscribe((rs) => { 
-      console.log("TerritoryDialog - Result: ",rs);
-      //Eliminar DIV si se ha descartado el territorio
-      //Agregar territorio si se ha validado correctamente
+  openMapDialog(x: number, y: number, newButton: HTMLButtonElement, canExit: boolean, id: string){
+    const dialog = this.dialog.open(MapManagerTerritoryDialogComponent, { 
+      data: { 
+        x: x, 
+        y: y, 
+        id: newButton, 
+        canExit: canExit, 
+        areaList: this.areaList
+      }, 
+      disableClose: true, 
+      width: '300px' 
     });
+    dialog.afterClosed().subscribe((rs) => { 
+      if(rs && rs.newData){ //Agregar territorio si se ha validado correctamente
+        console.log("TerritoryDialog - NewData Result: ",rs);
+        this.territoryList.push({
+          id: 0,
+          name: '',
+          area: '',
+          capital: false,
+          x: 0,
+          y: 0
+        });
+      } else if (rs && !rs.newData){ //Eliminar DIV si se ha descartado el territorio
+        console.log("TerritoryDialog - RemoveData Result: ",rs);
+      }
+    });
+  }
+
+  getTerritory(event: any){
+    console.log("getTerritory - Event: ",event);
+    return {name: "name", area: "area"};
   }
 
   //ASIGNACIÓN DE CONEXIONES ----------------------------------------------------------------------

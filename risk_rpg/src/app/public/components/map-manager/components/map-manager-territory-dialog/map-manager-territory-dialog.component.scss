@@ -1,10 +1,49 @@
 @import "src/assets/scss/_colors.scss";
 
+mat-dialog-content{
+  padding-bottom: 8px !important;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
 .header{
-  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  .title{
+    font-weight: bold;
+  }
+  .delete{
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
+
+.name{
+  margin-bottom: 14px;
+}
+
+.int-item{
+  display: flex;
+  align-items: center;
+  .int-color{
+    height: 20px;
+    width: 20px;
+    border: 1px solid $gray;
+    margin-top: 2px;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
 }
 
 .actions{
   margin-bottom: 10px;
   padding: 0px 24px;
+}
+
+button.disabled-button{
+  background-color: $gray;
 }

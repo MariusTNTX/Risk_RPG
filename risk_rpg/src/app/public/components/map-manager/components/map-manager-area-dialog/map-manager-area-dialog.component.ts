@@ -1,12 +1,11 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/core/notification.service';
+import { ConfirmDialogColorEnum } from 'src/app/public/models/enums/confirmDialogColorEnum';
 import { AreaIntf } from 'src/app/public/models/interfaces/areaIntf';
 import { ColorIntf } from 'src/app/public/models/interfaces/colorIntf';
 import { colorList } from 'src/app/public/models/lists_and_objects/colorList';
 import { ConfirmDialogComponent } from '../../../util/confirm-dialog/confirm-dialog.component';
-import { ConfirmDialogColorEnum } from 'src/app/public/models/enums/confirmDialogColorEnum';
-import { ColorEnum } from 'src/app/public/models/enums/colorEnum';
 
 @Component({
   selector: 'app-map-manager-area-dialog',

@@ -103,6 +103,7 @@
   align-items: center;
   color: $gray;
   font-size: 20px;
+  position: relative;
   .map-image{
     max-width: 100%;
     border: 5px solid $darkGreen;
@@ -111,12 +112,20 @@
 }
 
 .t-point{
+  position: absolute;
   width: 30px;
   height: 30px;
   background-color: transparent;
-  border: 5px solid $red;
-  position: absolute;
+  border: 5px solid $black;
   border-radius: 20px;
+}
+
+.map-image.cross-cursor {
+  cursor: pointer;
+}
+
+.add-territory-mode{
+  background-color: $blue !important;
 }
 
 @media (max-width: 640px) {

@@ -5,6 +5,8 @@ import { NotificationService } from '../../services/notification.service';
 import { ConfirmDialogComponent } from '../util/confirm-dialog/confirm-dialog.component';
 import { MapManagerAreaDialogComponent } from './components/map-manager-area-dialog/map-manager-area-dialog.component';
 import { AreaIntf } from '../../models/interfaces/areaIntf';
+import { MapManagerTerritoryDialogComponent } from './components/map-manager-territory-dialog/map-manager-territory-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map-manager',
@@ -14,6 +16,7 @@ import { AreaIntf } from '../../models/interfaces/areaIntf';
 export class MapManagerComponent {
 
   @ViewChild('fileInput') fileInput!: ElementRef;
+  @ViewChild('mapContainer') mapContainerRef!: ElementRef<HTMLDivElement>;
 
   //DATA:
   public mapName: string = '';
@@ -30,6 +33,7 @@ export class MapManagerComponent {
   constructor(
     public dialog: MatDialog,
     public _notificationService: NotificationService,
+    private router: Router,
   ){}
 
   ngOnInit(){
@@ -43,6 +47,8 @@ export class MapManagerComponent {
     return this.mapName.trim().length > 0;
   }
 
+  // OPCIONES SUPERIORES --------------------------------------------------------------------------
+
   saveAndExit(){
     if(this.validMapName()){
       const dialog = this.dialog.open(ConfirmDialogComponent, { data: { 
@@ -51,7 +57,8 @@ export class MapManagerComponent {
         color: ConfirmDialogColorEnum.BLUE
       }});
       dialog.afterClosed().subscribe((result) => { 
-        console.log("Las condiciones del dialog han sido aceptadas. Resultado: ", result)
+        result && this.router.navigate(['../']);
+        this._notificationService.showSuccess("El mapa ha sido guardado");
       });
     }
   }
@@ -64,7 +71,8 @@ export class MapManagerComponent {
         color: ConfirmDialogColorEnum.GREEN
       }});
       dialog.afterClosed().subscribe((result) => { 
-        console.log("Las condiciones del dialog han sido aceptadas. Resultado: ", result)
+        result && this.router.navigate(['/newGame']);
+        this._notificationService.showSuccess("El mapa ha sido guardado");
       });
     }
   }
@@ -76,9 +84,11 @@ export class MapManagerComponent {
       color: ConfirmDialogColorEnum.RED
     }});
     dialog.afterClosed().subscribe((result) => { 
-      console.log("Las condiciones del dialog han sido aceptadas. Resultado: ", result)
+      result && this.router.navigate(['../']);
     });
   }
+
+  // BOTONES PRINCIPALES --------------------------------------------------------------------------
 
   addImage(){
     this.fileInput.nativeElement.click();
@@ -96,23 +106,64 @@ export class MapManagerComponent {
   }
 
   addArea(){
-    const dialog = this.dialog.open(MapManagerAreaDialogComponent, { data: this.areaList });
+    const dialog = this.dialog.open(MapManagerAreaDialogComponent, { data: this.areaList, disableClose: true });
     dialog.afterClosed().subscribe((rs) => { 
       this.areaList = rs;
     });
   }
 
-  addTerritory(){
+  territoryMode(){
     this.showTPoint = !this.showTPoint;
   }
 
-  @HostListener('document:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent): void {
+  // ASIGNACIÓN TERRITORIOS -----------------------------------------------------------------------
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent): void {
     if (this.showTPoint) {
-      this.tPointX = event.pageX - 15;
-      this.tPointY = event.pageY - 15;
+      let clickedElement = event.target as HTMLElement;
+      if (clickedElement.classList.contains('map-image')) {
+        clickedElement = clickedElement.parentNode as HTMLElement;
+        this.showTPoint = false;
+        const containerRect = clickedElement.getBoundingClientRect();
+        const x = ((event.clientX - containerRect.left) / containerRect.width) * 100;
+        const y = ((event.clientY - containerRect.top) / containerRect.height) * 100;
+        this.addTerritory(x, y);
+      }
     }
   }
+
+  addTerritory(x: number, y: number){
+    console.log(x + ' x ' + y);
+    const mapContainer = this.mapContainerRef.nativeElement;
+    const containerRect = mapContainer.getBoundingClientRect();
+    x = x - ( (15 * 100) / containerRect.width );
+    y = y - ( (15 * 100) / containerRect.height );
+    const newButton = document.createElement('button', { is: 'mat-button' }) as HTMLButtonElement;
+    newButton.style.position = 'absolute';
+    newButton.style.width = '30px';
+    newButton.style.height = '30px';
+    newButton.style.backgroundColor = 'transparent';
+    newButton.style.border = '8px solid black';
+    newButton.style.borderRadius = '20px';
+    newButton.style.cursor = 'pointer';
+    newButton.style.left = x + '%';
+    newButton.style.top = y + '%';
+    mapContainer.appendChild(newButton);
+    newButton.addEventListener('click', () => this.openMapDialog(x, y, newButton, false));
+    this.openMapDialog(x, y, newButton, true);
+  }
+
+  openMapDialog(x: number, y: number, newButton: HTMLButtonElement, canExit: boolean){
+    const dialog = this.dialog.open(MapManagerTerritoryDialogComponent, { data: { x, y, newButton, canExit }, disableClose: true });
+    dialog.afterClosed().subscribe((rs) => { 
+      console.log("TerritoryDialog - Result: ",rs);
+      //Eliminar DIV si se ha descartado el territorio
+      //Agregar territorio si se ha validado correctamente
+    });
+  }
+
+  //ASIGNACIÓN DE CONEXIONES ----------------------------------------------------------------------
 
   addConnection(){
     

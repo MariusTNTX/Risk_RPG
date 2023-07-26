@@ -47,14 +47,13 @@
           </button>
         </div>
         <div class="action add-territory">
-          <button mat-button [disabled]="areaList.length === 0" [ngClass]="{'disabled-button': areaList.length === 0}" (click)="addTerritory()">
+          <button mat-button (click)="territoryMode()" [ngClass]="{'add-territory-mode': showTPoint}" [disabled]="areaList.length === 0" [ngClass]="{'disabled-button': areaList.length === 0}">
             <mat-icon>add</mat-icon>
             <span>Territorio</span>
           </button>
-          <div *ngIf="showTPoint" class="t-point" [style.left.px]="tPointX" [style.top.px]="tPointY"></div>
         </div>
         <div class="action add-connection">
-          <button mat-button [disabled]="territoryList.length < 2" [ngClass]="{'disabled-button': territoryList.length < 2}" (click)="addConnection()">
+          <button mat-button [disabled]="!territoryList || territoryList.length < 2" [ngClass]="{'disabled-button': !territoryList || territoryList.length < 2}" (click)="addConnection()">
             <mat-icon>add</mat-icon>
             <span>Conexión</span>
           </button>
@@ -71,9 +70,9 @@
       </div>
     </div>
     
-    <div class="map-container" [ngClass]="{'bg-white': !selectedImageUrl}">
+    <div class="map-container" #mapContainer [ngClass]="{'bg-white': !selectedImageUrl}">
       <span *ngIf="!selectedImageUrl">Añade una imágen de mapa</span>
-      <img [src]="selectedImageUrl" *ngIf="selectedImageUrl" class="map-image">
+      <img *ngIf="selectedImageUrl" [src]="selectedImageUrl" class="map-image" [ngClass]="{'cross-cursor': showTPoint}">
     </div>
 
   </div>

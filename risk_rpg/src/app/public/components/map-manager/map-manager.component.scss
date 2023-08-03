@@ -88,8 +88,6 @@
   }
 }
 
-
-
 .map-counter mat-list{
   display: flex;
   flex-direction: column;
@@ -103,12 +101,16 @@
   align-items: center;
   color: $gray;
   font-size: 20px;
-  position: relative;
-  .map-image{
-    max-width: 100%;
-    border: 5px solid $darkGreen;
-    border-radius: 8px;
+  .map-framework{
+    position: relative;
+    width: 100%;
+    .map-image{
+      width: 100%;
+      border: 5px solid $darkGreen;
+      border-radius: 8px;
+    }
   }
+  
 }
 
 .t-point{

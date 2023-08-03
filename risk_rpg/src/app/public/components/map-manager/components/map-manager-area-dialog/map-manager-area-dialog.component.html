@@ -44,8 +44,8 @@
         <div class="name">
           <mat-form-field>
             <mat-label>Nombre de Área</mat-label>
-            <input matInput #input [(ngModel)]="areaName" maxlength="10" placeholder="">
-            <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
+            <input matInput #input [(ngModel)]="areaName" maxlength="{{ nameMaxLength }}" placeholder="">
+            <mat-hint align="end">{{ input.value.length }}/{{ nameMaxLength }}</mat-hint>
           </mat-form-field>
         </div>
       </div>

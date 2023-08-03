@@ -17,6 +17,7 @@ export class MapManagerAreaDialogComponent {
   //DATA:
   public areaList: AreaIntf[] = JSON.parse(JSON.stringify(this.data)); //Copia independiente
   public colorList: ColorIntf[] = colorList;
+  public nameMaxLength: number = 20;
 
   //AREA: 
     //Model

@@ -7,6 +7,12 @@ import { MapManagerAreaDialogComponent } from './components/map-manager-area-dia
 import { AreaIntf } from '../../models/interfaces/areaIntf';
 import { MapManagerTerritoryDialogComponent } from './components/map-manager-territory-dialog/map-manager-territory-dialog.component';
 import { Router } from '@angular/router';
+import { ConfigService } from 'src/app/core/config/config.service';
+
+//TODO: Añadir tooltip a territorios
+//TODO: Cambiar sombra de los territorios capital
+//TODO: No permitir poner capital a un área si ya tiene una (o sustituir la anterior por la actual)
+//TODO: Actualizar territorios al actualizar áreas
 
 @Component({
   selector: 'app-map-manager',
@@ -30,11 +36,14 @@ export class MapManagerComponent {
   public showTPoint: boolean = false;
   public tPointX: number = 0;
   public tPointY: number = 0;
+  private wPercentage: number = this._configService.territoryPointSize;
+  private hPercentage: number = this._configService.territoryPointSize;
 
   constructor(
     public dialog: MatDialog,
     public _notificationService: NotificationService,
     private router: Router,
+    private _configService: ConfigService,
   ){}
 
   ngOnInit(){
@@ -110,7 +119,7 @@ export class MapManagerComponent {
   addArea(){
     const dialog = this.dialog.open(MapManagerAreaDialogComponent, { data: this.areaList, disableClose: true });
     dialog.afterClosed().subscribe((rs) => { 
-      this.areaList = rs;
+      if(rs) this.areaList = rs;
     });
   }
 
@@ -138,51 +147,75 @@ export class MapManagerComponent {
   addTerritory(x: number, y: number){
     const mapContainer = this.mapContainerRef.nativeElement;
     const containerRect = mapContainer.getBoundingClientRect();
-    x = x - ( (15 * 100) / containerRect.width );
-    y = y - ( (15 * 100) / containerRect.height );
+    this.hPercentage = ( (containerRect.width * (this.wPercentage/100)) / containerRect.height ) * 100;
+    x = x - (this.wPercentage / 2);
+    y = y - (this.hPercentage / 2);
     const newButton = document.createElement('button', { is: 'mat-button' }) as HTMLButtonElement;
     newButton.id = this.nextId.toString();
     this.nextId = this.nextId + 1;
     newButton.style.position = 'absolute';
-    newButton.style.width = '30px';
-    newButton.style.height = '30px';
+    newButton.style.width = this.wPercentage + '%';
+    newButton.style.height = this.hPercentage + '%';
     newButton.style.backgroundColor = 'transparent';
     newButton.style.border = '8px solid black';
-    newButton.style.borderRadius = '20px';
-    newButton.style.cursor = 'pointer';
+    newButton.style.borderRadius = '50%';
+    newButton.style.boxShadow = '0px 0px 5px 5px white';
     newButton.style.left = x + '%';
     newButton.style.top = y + '%';
     mapContainer.appendChild(newButton);
-    newButton.addEventListener('click', (event: any) => this.openMapDialog(x, y, newButton, true, event.target.id));
-    this.openMapDialog(x, y, newButton, false, newButton.id);
+    this.openMapDialog(x, y, newButton, false);
+    newButton.addEventListener('click', () => this.openMapDialog(x, y, newButton, true));
   }
 
-  openMapDialog(x: number, y: number, newButton: HTMLButtonElement, canExit: boolean, id: string){
+  openMapDialog(x: number, y: number, newButton: HTMLButtonElement, canExit: boolean){
+    const currentTerritory = this.territoryList.filter((territory: any) => territory.x === x && territory.y === y);
     const dialog = this.dialog.open(MapManagerTerritoryDialogComponent, { 
-      data: { 
+      data: {
+        territory: currentTerritory,
         x: x, 
         y: y, 
-        id: newButton, 
-        canExit: canExit, 
+        point: newButton, 
+        canExit: currentTerritory.length > 0, 
         areaList: this.areaList
       }, 
       disableClose: true, 
       width: '300px' 
     });
     dialog.afterClosed().subscribe((rs) => { 
-      if(rs && rs.newData){ //Agregar territorio si se ha validado correctamente
+      if(rs && rs.newData && rs.addTerritory){ //Agregar territorio si se ha validado correctamente
         console.log("TerritoryDialog - NewData Result: ",rs);
-        this.territoryList.push({
-          id: 0,
-          name: '',
-          area: '',
-          capital: false,
-          x: 0,
-          y: 0
+        this.territoryList.push({ 
+          point: rs.data.point, 
+          x: rs.data.x,
+          y: rs.data.y,
+          name: rs.name, 
+          area: rs.area, 
+          capital: rs.capital 
         });
+        rs.data.point.style.backgroundColor = rs.area.color.main;
+      } else if(rs && rs.newData && !rs.addTerritory){ //Editar territorio si se ha validado correctamente
+        console.log("TerritoryDialog - EditData Result: ",rs);
+        this.territoryList = this.territoryList.map((territory: any) => {
+          console.log(territory.x)
+          console.log(rs.data.x)
+          if(territory.x === rs.data.x && territory.y === rs.data.y){
+            console.log("Territorio editado")
+            return { 
+              point: rs.data.point, 
+              x: rs.data.x,
+              y: rs.data.y,
+              name: rs.name, 
+              area: rs.area, 
+              capital: rs.capital 
+            };
+          }
+          return territory;
+        });
+        rs.data.point.style.backgroundColor = rs.area.color.main;
       } else if (rs && !rs.newData){ //Eliminar DIV si se ha descartado el territorio
         console.log("TerritoryDialog - RemoveData Result: ",rs);
       }
+      console.log("TerritoryList: ",this.territoryList);
     });
   }
 

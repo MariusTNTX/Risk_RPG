@@ -35,6 +35,9 @@
         }
         .name{
           margin: 0 10px;
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
       .actions{

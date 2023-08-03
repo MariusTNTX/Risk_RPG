@@ -70,9 +70,11 @@
       </div>
     </div>
     
-    <div class="map-container" #mapContainer [ngClass]="{'bg-white': !selectedImageUrl}">
+    <div class="map-container" [ngClass]="{'bg-white': !selectedImageUrl}">
       <span *ngIf="!selectedImageUrl">Añade una imágen de mapa</span>
-      <img *ngIf="selectedImageUrl" [src]="selectedImageUrl" class="map-image" [ngClass]="{'cross-cursor': showTPoint}">
+      <div *ngIf="selectedImageUrl" #mapContainer class="map-framework">
+        <img [src]="selectedImageUrl" class="map-image" [ngClass]="{'cross-cursor': showTPoint}">
+      </div>
     </div>
 
   </div>

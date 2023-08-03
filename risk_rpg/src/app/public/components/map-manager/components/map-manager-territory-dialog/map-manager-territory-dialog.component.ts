@@ -1,12 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmDialogColorEnum } from 'src/app/public/models/enums/confirmDialogColorEnum';
 import { AreaIntf } from 'src/app/public/models/interfaces/areaIntf';
 import { ColorIntf } from 'src/app/public/models/interfaces/colorIntf';
 import { colorList } from 'src/app/public/models/lists_and_objects/colorList';
-import { MapManagerAreaDialogComponent } from '../map-manager-area-dialog/map-manager-area-dialog.component';
-import { NotificationService } from 'src/app/core/notification.service';
 import { ConfirmDialogComponent } from '../../../util/confirm-dialog/confirm-dialog.component';
-import { ConfirmDialogColorEnum } from 'src/app/public/models/enums/confirmDialogColorEnum';
 
 @Component({
   selector: 'app-map-manager-territory-dialog',
@@ -15,10 +13,12 @@ import { ConfirmDialogColorEnum } from 'src/app/public/models/enums/confirmDialo
 })
 export class MapManagerTerritoryDialogComponent {
 
+  @ViewChild('cancelButton', { static: false }) cancelButton!: ElementRef;
+
   //DATA:
   public areaList: AreaIntf[] = this.data.areaList;
-  public territory: any[] = JSON.parse(JSON.stringify(this.data.territory)); //Copia independiente
   public colorList: ColorIntf[] = colorList;
+  public territory: any[] = this.data.territory;
   public canExit: boolean = this.data.canExit;
 
   //TERRITORY: 
@@ -30,15 +30,28 @@ export class MapManagerTerritoryDialogComponent {
   
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: MapManagerTerritoryDialogComponent,
-    public dialogRef: MatDialogRef<MapManagerTerritoryDialogComponent>,
-    public dialog: MatDialog,
-    public _notificationService: NotificationService,
+    private dialogRef: MatDialogRef<MapManagerTerritoryDialogComponent>,
+    private dialog: MatDialog,
   ) { 
     console.log("territory: ",this.territory)
   }
 
+  ngOnInit(){
+    if(this.territory && this.territory.length > 0){
+      this.territoryName = this.territory[0].name;
+      this.territoryArea = this.territory[0].area;
+      this.territoryCapital = this.territory[0].capital;
+    }
+  }
+
+  ngAfterViewInit() {
+    if (this.cancelButton && this.cancelButton.nativeElement) {
+      this.cancelButton.nativeElement.blur();
+    }
+  }
+
   dataIsEqual(){
-    return false; /* JSON.stringify(this.areaList) === JSON.stringify(this.data); */ //---
+    return false;
   }
 
   deleteTerritory(){ 
@@ -60,9 +73,10 @@ export class MapManagerTerritoryDialogComponent {
     this.dialogRef.close({
       name: this.territoryName, 
       area: this.territoryArea, 
-      capital: this.territoryCapital, 
+      capital: this.territoryCapital ? this.territoryCapital : false, 
       data: this.data,
-      newData: newData
+      newData: newData,
+      addTerritory: !this.data.canExit
     });
   }
   
